@@ -52,9 +52,9 @@
           {%- endif -%}
 
           <div class="CartItem__PriceList">
-            {%- if line_item.original_price > line_item.price -%}
+            {%- if line_item.variant.compare_at_price > line_item.price -%}
               <span class="CartItem__Price Price Price--highlight" data-money-convertible>{{ bold_item_price | money_without_trailing_zeros }}</span>
-              <span class="CartItem__OriginalPrice Price Price--compareAt" data-money-convertible>{{ line_item.original_price | money_without_trailing_zeros }}</span>
+              <span class="CartItem__OriginalPrice Price Price--compareAt" data-money-convertible>{{ line_item.variant.compare_at_price | money_without_trailing_zeros }}</span>
             {%- else -%}
               <span class="CartItem__Price Price" data-money-convertible>{{ bold_item_price | money_without_trailing_zeros }}</span>
             {%- endif -%}
