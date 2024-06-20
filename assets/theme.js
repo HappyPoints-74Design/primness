@@ -3691,6 +3691,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // If we have only one content then we only have product, otherwise we have products and articles
             if (window.theme.searchMode === 'product') {
               _this18.searchResultsElement.innerHTML = contents[0];
+               * Fixed bug cannot add to cart on search suggestion
+               */
+              let collectionElm = document.querySelector('.ProductItem');
+              if (collectionElm) {
+
+                if (items != '') {
+                  populateList(items, itemsList);
+                }
+
+                let sizes = document.querySelectorAll('.ProductItem .ProductForm__Variants label.SizeSwatch:not(.disabled)');
+                sizes.forEach(function(item) {
+                
+                  item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    let formThis = this.closest('form');
+                    formThis.querySelectorAll('label.SizeSwatch');
+                    var options = formThis.querySelectorAll('label.SizeSwatch');
+                    options.forEach(function(i) {
+                      if (i.classList.contains("active-border")) {
+                        i.classList.remove('active-border')
+                      }
+                    })
+                    
+                    let currentVariant = this.getAttribute('data-variant-id');
+                    formThis.querySelector('[selected]').removeAttribute('selected');
+                    formThis.querySelector('option[value="'+currentVariant+'"]').setAttribute('selected', 'selected');
+                    this.classList.add('active-border');
+                    setTimeout(() => {
+                      formThis.querySelector('[data-action="add-to-cart"]').click();
+                    }, 500);
+
+                  })
+                })
+              }
+              /**
+               * End Fixed bug cannot add to cart on search suggestion
+               */
             } else {
               _this18.searchResultsElement.innerHTML = '<div class="PageLayout PageLayout--breakLap">\n              <div class="PageLayout__Section">' + contents[0] + '</div>\n              <div class="PageLayout__Section PageLayout__Section--secondary">' + contents[1] + '</div>\n            </div>';
             }
