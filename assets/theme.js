@@ -3691,8 +3691,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // If we have only one content then we only have product, otherwise we have products and articles
             if (window.theme.searchMode === 'product') {
               _this18.searchResultsElement.innerHTML = contents[0];
-               * Fixed bug cannot add to cart on search suggestion
-               */
+               /**
+                * Fixed bug cannot add to cart on search suggestion
+                */
               let collectionElm = document.querySelector('.ProductItem');
               if (collectionElm) {
 
