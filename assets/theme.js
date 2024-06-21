@@ -3578,7 +3578,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__helper_Accessibility__ = __webpack_require__(3);
-
+  /* Dev import */ var __WEBPACK_IMPORTED_MODULE_1__components_ProductVariants__ = __webpack_require__(11); 
   var Search = function () {
     function Search() {
       _classCallCheck(this, Search);
@@ -3694,6 +3694,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                /**
                 * Fixed bug cannot add to cart on search suggestion
                 */
+              document.querySelectorAll('.ProductItem').forEach(function(product) {
+                var options = JSON.parse(product.getAttribute('data-section-settings'));
+                if (options['templateSuffix'] !== 'coming-soon') {
+                  product.productVariants = new __WEBPACK_IMPORTED_MODULE_1__components_ProductVariants__["default"](product, options);
+                }
+              })
+
               let collectionElm = document.querySelector('.ProductItem');
               if (collectionElm) {
 
