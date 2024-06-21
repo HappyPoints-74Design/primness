@@ -6443,7 +6443,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   /* harmony import */var __WEBPACK_IMPORTED_MODULE_0__helper_Dom__ = __webpack_require__(0);
-
+  /* Dev import */ var __WEBPACK_IMPORTED_MODULE_1__components_ProductVariants__ = __webpack_require__(11);
   var SearchSection = function () {
     function SearchSection(container) {
       _classCallCheck(this, SearchSection);
@@ -6476,6 +6476,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           __WEBPACK_IMPORTED_MODULE_0__helper_Dom__["default"].nodeListToArray(this.element.querySelectorAll('.ProductList .ProductItem, .ArticleList .ArticleItem')).forEach(function (item) {
             _this55.intersectionObserver.observe(item);
+              var options = JSON.parse(item.getAttribute('data-section-settings'));
+              if (options['templateSuffix'] !== 'coming-soon') {
+                item.productVariants = new __WEBPACK_IMPORTED_MODULE_1__components_ProductVariants__["default"](item, options);
+              }
           });
         }
       }

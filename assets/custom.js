@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function(){
     sizes.forEach(function(item) {
     
       item.addEventListener('click', function(e) {
+        e.preventDefault();
         let formThis = this.closest('form');
         formThis.querySelectorAll('label.SizeSwatch');
         var options = formThis.querySelectorAll('label.SizeSwatch');

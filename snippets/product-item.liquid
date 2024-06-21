@@ -4,7 +4,7 @@
     "templateSuffix": {{ product.template_suffix | json }}
   }
   {%- endcapture -%}
-<div data-section-settings='{{ section_settings_product }}'id="Product-{{ product.id }}" class="ProductItem {% if use_horizontal %}ProductItem--horizontal{% endif %}">
+<div data-section-settings='{{ section_settings_product }}' id="Product-{{ product.id }}" class="ProductItem {% if use_horizontal %}ProductItem--horizontal{% endif %}">
   <div class="ProductItem__Wrapper">
     {%- comment -%}
     We are using LazySizes to efficiently choose the most appropriate image in the set. However, because internally LazySizes uses srcset, we need to make
